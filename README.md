@@ -53,6 +53,10 @@ str + "TEST" =  yiibai.comTEST
 
 - 列表的使用方式和字符串类似：使用 []、[:] 来访问，索引从 0 开始， -1 表示最后一个元素的索引。 + 是列表连接符， * 是重复运算符。
 
+- 列表的大小和元素可以变更
+
+- Python列表的所有项可以是不同的数据类型
+
 <pre>
 >>> list = [ 'yes', 'no', 786 , 2.23, 'minsu', 70.2 ]
 >>> list
@@ -74,9 +78,71 @@ tinylist * 2 =  [100, 'maxsu', 100, 'maxsu']
 list + tinylist =  ['yes', 'no', 786, 2.23, 'minsu', 70.2, 100, 'maxsu']
 </pre>
 
+
+###### 集合
+
+- 集合和数学上的集合表示方法一致，大括号{}括起来，多个元素逗号隔开
+- 集合中的元素是唯一的
+
+<pre>
+>>> set1 = {1, 2, 3}
+>>> type(set1)
+&lt;class 'set'>
+
+>>> set2 = {1, 1, 1, 1, 2, 3, 3, 2}
+>>> set2
+{1, 2, 3}
+</pre>
+
 ###### 元组
 
-- 
+- 元组以 <font color=red size=5>()</font> 括起来，按逗号分隔开的多个值集合。
+
+- 元组无法更新。可以认为是"只读的列表"。 元组可以认为是一个"列表集合"的引用，可以指向不同的"列表集合",但指向的目标"列表集合"不能被修改。     
+
+- 元组使用方式和列表、字符串一样：也是使用 []来获取元素.
+
+<pre>
+>>> tuple = ( 'maxsu', 786 , 2.23, 'yiibai', 70.2  )
+>>> print ('tuple[-3:-1] = ', tuple[-3:-1])
+tuple[-3:-1] =  (2.23, 'yiibai')
+>>> tuple[1] = 'new item value'  ##元组不能变更
+Traceback (most recent call last):
+  File "<pyshell#295>", line 1, in <module>
+    tuple[1] = 'new item value'
+TypeError: 'tuple' object does not support item assignment
+</pre>
 
 ###### 字典
 
+- 字典是哈希表类型，由键值对组成。类似于javascript的对象
+- 字典由大括号(<font color=red size=5>{}</font>)括起来，可以使用方括号(<font color=red size=5>[]</font>)分配和访问值
+- 字典就是一个json串的形式
+- 字典中的元素没有顺序,类似java的hashMap
+
+<pre>
+>>> dic = {}
+>>> dic['one'] = 'This is one'
+>>> dic
+{'one': 'This is one'}
+>>> dic['two'] = 'This is two'
+>>> dic
+{'one': 'This is one', 'two': 'This is two'}
+>>> dic[2]
+Traceback (most recent call last):
+  File "<pyshell#312>", line 1, in <module>
+    dic[2]
+KeyError: 2
+>>> dic[2] = 'This is three'
+>>> dic
+{'one': 'This is one', 'two': 'This is two', 2: 'This is three'}
+</pre>
+
+
+###### 数据类型转换
+
+- 有时候，可能在内置类型之间进行数据转换。只需使用类型名称作为函数即可。
+
+<pre
+
+</pre>
