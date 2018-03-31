@@ -206,3 +206,270 @@ KeyError: 2
 >>> a >> 1
 0
 </pre>
+
+###### 成员运算符
+
+成员运算符常用于 测试给定值是否为序列中的成员例如字符串、列表或元组。
+
+- <font color=red size=5>in</font> 在指定序列中可以找到变量的值，则返回True
+- <font color=red size=5>not in</font> 在指定序列中找不到变量的值，则返回True
+
+<pre>
+>>> a = 2
+>>> b = 3
+>>> list = [1, 2, 5, 7]
+>>> if ( a in list ):
+	print("a is a element of list")
+else: print("a is not a element of list")
+
+a is a element of list
+</pre>
+
+###### 身份运算符
+
+身份运算符用于比较两个对象在内存中的位置。
+
+- is 指向相同的对象，返回True
+- is not 指向的是不同的对象，返回True
+- id()返回对象在内存中的位置
+
+<pre>
+>>> a = 20
+>>> b = 20
+>>> a is b
+True
+>>> id(a)
+1559733952
+>>> id(b)
+1559733952
+>>> id(a) == id(b)
+True
+>>> a is not b
+False
+</pre>
+
+##### 决策（分支）
+
+- if 表达式为True，则执行语句
+- else if表达式为False时，会执行else的语句
+- <font color=red size=5>elif</font>   用于检查多个表达式是否为True
+
+格式如下：
+<pre>
+if 表达式1:
+    代码段1
+elif 表达式2:
+    代码段2
+elif 表达式3:
+    代码段3
+else:
+    代码段4
+</pre>
+
+
+<pre>
+>>> a = 60
+>>> if(a >= 90): print("优秀")
+elif(a < 90 and a >= 80): print("良好")
+else: print("一般")
+
+一般
+>>> a = 97
+>>> if(a >= 90): print("优秀")
+elif(a < 90 and a >= 80): print("良好")
+else: print("一般")
+
+优秀
+>>> a = 88
+>>> if(a >= 90): print("优秀")
+elif(a < 90 and a >= 80): print("良好")
+else: print("一般")
+
+良好
+</pre>
+
+
+##### 循环语句
+
+###### <font color=red size=5>while
+
+python 支持循环语句相关联的else语句。</font>
+<pre>
+####whlie实例
+>>> cnt = 3
+>>>> while ( cnt > 0 ) :
+	print("cnt value is:" , cnt)
+	cnt -= 1
+
+	
+cnt value is: 3
+cnt value is: 2
+cnt value is: 1
+
+#### 循环 + else 语句的结合实例
+>>> count = 0
+>>> while count < 5:
+   print (count, " is  less than 5")
+   count = count + 1
+else:
+   print (count, " is not less than 5")
+
+   
+0  is  less than 5
+1  is  less than 5
+2  is  less than 5
+3  is  less than 5
+4  is  less than 5
+5  is not less than 5
+</pre>
+
+
+###### for 循环
+
+for 循环可以遍历任何序列的项目，如列表或字符串等。基本语法如下：
+
+<pre>
+for 交互变量 in 序列:
+    执行语句
+</pre>
+
+
+range() 是一个可以对一系列数字进行迭代的函数，可以生成一个算数进化的迭代器。
+
+<pre>
+>>> list()  #获取一个空列表
+[]
+>>> list(range(5)) #使用list()函数将range转换为列表
+[0, 1, 2, 3, 4]
+>>> range(5) #生成一个0-4的迭代器
+range(0, 5)
+
+### for循环打印迭代器
+>>> for var in list(range(5)):
+   print (var)
+
+   
+0
+1
+2
+3
+4
+
+### for循环打印字符串的每个字符
+>>> for letter in 'Python':     # traversal of a string sequence
+    print ('Current Letter :', letter)
+
+    
+Current Letter : P
+Current Letter : y
+Current Letter : t
+Current Letter : h
+Current Letter : o
+Current Letter : n
+
+
+
+### 按序列索引迭代
+>>> fruits = ['banana', 'apple',  'mango']
+>>> for idx in range(len(fruits)):
+	print("元素", idx, "值为:", fruits[idx])
+
+	
+元素 0 值为: banana
+元素 1 值为: apple
+元素 2 值为: mango
+</pre>
+
+如果else语句与for循环一起使用，则只有在for循环正常终止(而不是遇到break语句)时才执行else块。
+
+如果else语句与while循环一起使用，则在条件变为false时执行else语句。
+
+
+**for循环正常运行终止，则后面执行else语句:**
+<pre>
+>>> numbers = [11,33,55,39,55,75,37,21,23,41,13]
+>>> for num in numbers:
+    if num%2 == 0:
+        print ('the list contains an even number')
+        break
+else:
+    print ('the list doesnot contain even number')
+
+    
+the list doesnot contain even number
+</pre>
+
+
+
+**for循环非正常终止，是break终止的，不会执行else语句:**
+<pre>
+>>> numbers = [11,33,55,39,55,75,37,21,23,41,13]
+>>> for num in numbers:
+    if num%2 != 0:
+        print ('the list contains an even number')
+        break
+else:
+    print ('the list doesnot contain even number')
+
+    
+the list contains an even number
+</pre>
+
+**嵌套循环实例：**
+
+<pre>
+>>> for i in range(1,11):
+    for j in range(1,11):
+        k=i*j
+        print (k, end=' ') #指定间隔符为 ' '
+    print()
+
+    
+1 2 3 4 5 6 7 8 9 10 
+2 4 6 8 10 12 14 16 18 20 
+3 6 9 12 15 18 21 24 27 30 
+4 8 12 16 20 24 28 32 36 40 
+5 10 15 20 25 30 35 40 45 50 
+6 12 18 24 30 36 42 48 54 60 
+7 14 21 28 35 42 49 56 63 70 
+8 16 24 32 40 48 56 64 72 80 
+9 18 27 36 45 54 63 72 81 90 
+10 20 30 40 50 60 70 80 90 100 
+
+
+#实例2
+>>> for i in range(1, 4):
+	for j in range(1, 4):
+		print( i * j, end = '\t') #指定间隔符为 '\t'
+	print()
+
+	
+1	2	3	
+2	4	6	
+3	6	9
+</pre>
+
+
+
+打印九九乘法表：
+<pre>
+>>> # 打印九九乘法表
+for i in range(1, 10):
+	for j in range(1, 10):
+		if(j <= i):
+			print(i, "*", j, "=" , i * j, end = ' ')
+		else:
+			break
+	print()
+
+	
+1 * 1 = 1 
+2 * 1 = 2 2 * 2 = 4 
+3 * 1 = 3 3 * 2 = 6 3 * 3 = 9 
+4 * 1 = 4 4 * 2 = 8 4 * 3 = 12 4 * 4 = 16 
+5 * 1 = 5 5 * 2 = 10 5 * 3 = 15 5 * 4 = 20 5 * 5 = 25 
+6 * 1 = 6 6 * 2 = 12 6 * 3 = 18 6 * 4 = 24 6 * 5 = 30 6 * 6 = 36 
+7 * 1 = 7 7 * 2 = 14 7 * 3 = 21 7 * 4 = 28 7 * 5 = 35 7 * 6 = 42 7 * 7 = 49 
+8 * 1 = 8 8 * 2 = 16 8 * 3 = 24 8 * 4 = 32 8 * 5 = 40 8 * 6 = 48 8 * 7 = 56 8 * 8 = 64 
+9 * 1 = 9 9 * 2 = 18 9 * 3 = 27 9 * 4 = 36 9 * 5 = 45 9 * 6 = 54 9 * 7 = 63 9 * 8 = 72 9 * 9 = 81
+</pre>
