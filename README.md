@@ -473,3 +473,40 @@ for i in range(1, 10):
 1 * 8 = 8 2 * 8 = 16 3 * 8 = 24 4 * 8 = 32 5 * 8 = 40 6 * 8 = 48 7 * 8 = 56 8 * 8 = 64 
 1 * 9 = 9 2 * 9 = 18 3 * 9 = 27 4 * 9 = 36 5 * 9 = 45 6 * 9 = 54 7 * 9 = 63 8 * 9 = 72 9 * 9 = 81
 </pre>
+
+
+
+##### 循环控制语句
+
+循环语句正常是顺序执行，可以使用循环控制语句更改执行顺序。
+
+- break ： 如果使用嵌套循环，则break语句将停止执行最内层循环
+
+- continue ： continue语句将控制返回到<u>当前循环</u>的开头。当遇到continue语句时，循环将不执行当前迭代中剩余的语句，而直接从下一次迭代开始执行
+
+- <font color=red size=5>pass</font> ： 占位符，不做任何事情； 可以使用在函数、if、else分支语句中，使用pass，无错误；定义一个函数时，但函数体部分暂时还没有想好怎么编写，又不能空着不写内容，因此可以用pass来替代占个位置。
+
+<pre>
+
+##break示例
+>>> for letter in 'Python':
+	if letter == 'h':
+		break
+	print('当前字符:', letter)
+
+	
+当前字符: P
+当前字符: y
+当前字符: t
+
+
+>>> def func():
+	pass
+</pre>
+
+
+##### 迭代器、生成器
+
+迭代器是允许遍历集合的所有元素的 对象，而不管其具体实现。 python 中， 迭代器对象实现了<font color=red size=5>iter()</font> 和 <font color=red size=5>next() </font>。
+String ，List或Tuple对象可用于创建迭代器对象。
+
