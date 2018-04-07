@@ -507,6 +507,95 @@ for i in range(1, 10):
 
 ##### 迭代器、生成器
 
+###### 迭代器
+
 迭代器是允许遍历集合的所有元素的 对象，而不管其具体实现。 python 中， 迭代器对象实现了<font color=red size=5>iter()</font> 和 <font color=red size=5>next() </font>。
 String ，List或Tuple对象可用于创建迭代器对象。
 
+- <font color=red size=5>iter(序列)</font> ： 用于创建可迭代对象的迭代器对象。
+
+- <font color=red size=5>next(迭代器) </font>
+
+<pre>
+>>> for ele in iter('Python'):
+	print(ele)
+
+	
+P
+y
+t
+h
+o
+n
+
+### next(迭代器)实例：实例中跑出了异常，我们先忽略留作后面解释
+>>> it = iter('Python')
+>>> 
+>>> while(True):
+	print(next(it))
+
+	
+P
+y
+t
+h
+o
+n
+Traceback (most recent call last):
+  File "<pyshell#46>", line 2, in <module>
+    print(next(it))
+StopIteration
+</pre>
+
+
+
+###### 生成器
+
+生成器(gernerator) 是使用 <font color=red size=5>yield </font> 方法产生一系列值的函数。
+
+当一个生成器函数被调用时，它返回一个生产器对象，而不会执行该函数。当第一次调用next方法时，函数才开始执行，直到它达到yield语句，返回yielded值。yield保持跟踪，即记住最后一次执行，而第二个next调用从前一个值继续。
+
+实例中，我们定义了一个关于斐波那契数列的迭代器：
+
+<pre>
+>>> def fibnacci(n):
+	a, b, cnt = 0, 1, 0
+	while n >= cnt:
+		yield a #后面每次调用next均返回此时a的值
+"""
+或者使用： 
+t = a
+a = b
+b = t + a
+"""
+		a , b = b, a + b  #等效于注释中的三条语句
+		cnt += 1
+
+		
+>>> f = fibnacci(5)
+>>> while True:
+   try:
+      print (next(f), end=" ")
+   except StopIteration:
+      sys.exit()
+
+      
+0 1 1 2 3 5 
+
+
+##### python中的两个数交换值
+>>> a = 3
+>>> b = 4
+>>> a , b = b, a
+>>> a
+4
+>>> b
+3
+</pre>
+
+
+
+##### 数值相关的内置函数
+
+- abs(x) : x的绝对值
+- 
