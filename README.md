@@ -597,5 +597,218 @@ b = t + a
 
 ##### 数值相关的内置函数
 
+需要导入math模块: import math
+再静态引用方法使用。
+
 - abs(x) : x的绝对值
-- 
+- ceil(x) : 向上取整
+- round(x, [,n]) : 四舍五入到n位整数
+<pre>
+>>> import math
+>>> math.ceil(1.2)
+2
+</pre>
+
+
+###### 随机数函数
+
+常用于用于游戏，模拟，测试，安全和隐私应用。 均需要导入 random 模块。
+
+- <font color=red size=5>choice(seq)</font> : 来自列表，元组或字符串的随机项目
+<pre>
+>>> import random
+>>> random.choice(range(1,10))
+7
+</pre>
+
+- randrange([start,] stop [,step]) : 从范围(start, stop, step)中随机选择的元素。
+
+<pre>
+>>> random.randrange(0, 10, 2)
+6
+</pre>
+
+- <font color=red size=5>random()</font> : 返回随机浮点数r(0 <= r < 1)
+
+<pre>
+>>> random.random()
+0.01566720229808216
+>>> random.random()
+0.25537615809114034
+>>> random.random()
+0.6146573049254063
+>>> 100 * random.random()
+39.58207281841397
+>>> round(100*random.random())
+6
+>>> round(100*random.random())
+24
+>>> round(100*random.random())
+67
+</pre>
+
+
+- <font color=red size=5>shuffle(lst)</font> : 将列表list的项目随机化(shuffle是洗牌的意思)，会直接变更list列表的数据项
+
+<pre>
+>>> lst = [12, 34, 56, 78 , 90]
+>>> random.shuffle(lst)
+>>> lst
+[12, 78, 56, 90, 34]
+>>> random.shuffle(lst)
+>>> lst
+[90, 34, 12, 56, 78]
+</pre>
+
+
+- uniform(x, y) : 返回随机浮点数 r (x <= r < y)
+
+<pre>
+>>> random.uniform(5, 10)
+5.726281774599666
+>>> random.uniform(50, 55)
+50.12916962172345
+>>> random.uniform(50, 55)
+52.17721989998332
+</pre>
+
+math 模块还定义了2个常量： pi、e
+
+<pre>
+>>> math.pi
+3.141592653589793
+>>> math.e
+2.718281828459045
+</pre>
+
+###### 字符串格式化
+
+字符串格式运算符：% 。 
+
+<pre>
+>>> print("My name is %s, i'm %d years old, my score of math is %f!" % ('OYY', 18, 97.5))
+My name is OYY, i'm 18 years old, my score of math is 97.500000!
+</pre>
+
+
+三重引号允许字符串跨越多行，包括逐字记录的新一行，TAB和任何其他特殊字符。
+
+三重引号的语法由三个连续的单引号或双引号组成。
+
+<pre>
+>>> txt = """
+几乎每一种版本控制系统都以某种形式支持分支。使用分支意味着你可以从开发主线上分离开来，然后在不影响主线的同时继续工作。在很多版本控制系统中，这是个昂贵的过程，常常需要创建一个源代码目录的完整副本，对大型项目来说会花费很长时间。
+
+有人把 Git 的分支模型称为“必杀技特性”，而正是因为它，将 Git 从版本控制系统家族里区分出来。Git 有何特别之处呢？Git 的分支可谓是难以置信的轻量级，它的新建操作几乎可以在瞬间完成，并且在不同分支间切换起来也差不多一样快。和许多其他版本控制系统不同，Git 鼓励在工作流程中频繁使用分支与合并，哪怕一天之内进行许多次都没有关系。理解分支的概念并熟练运用后，你才会意识到为什么 Git 是一个如此强大而独特的工具，并从此真正改变你的开发方式。
+"""
+
+>>> print(txt)
+
+几乎每一种版本控制系统都以某种形式支持分支。使用分支意味着你可以从开发主线上分离开来，然后在不影响主线的同时继续工作。在很多版本控制系统中，这是个昂贵的过程，常常需要创建一个源代码目录的完整副本，对大型项目来说会花费很长时间。
+
+有人把 Git 的分支模型称为“必杀技特性”，而正是因为它，将 Git 从版本控制系统家族里区分出来。Git 有何特别之处呢？Git 的分支可谓是难以置信的轻量级，它的新建操作几乎可以在瞬间完成，并且在不同分支间切换起来也差不多一样快。和许多其他版本控制系统不同，Git 鼓励在工作流程中频繁使用分支与合并，哪怕一天之内进行许多次都没有关系。理解分支的概念并熟练运用后，你才会意识到为什么 Git 是一个如此强大而独特的工具，并从此真正改变你的开发方式。
+</pre>
+
+
+
+如果字符串中需要保留 \ 字符，可以使用原始字符，即在字符串前面加 'r或者R'
+
+<pre>
+>>> print ('C:\\nowhere')
+C:\nowhere
+>>> print (r'C:\\nowhere')
+C:\\nowhere
+>>> print (R'C:\\nowhere')
+C:\\nowhere
+</pre>
+
+
+###### 内置字符串函数
+
+- capitalize() : 将字符串首字母大写
+- count(str, beg = 0,end = len(string)) : 计算字符串出现有多少次str或字符串的子字符串,如果beg、end指定，则在beg与end之间匹配。
+
+<pre>
+>>> say = "hello python!";
+>>> say.capitalize()
+'Hello python!'
+>>> say
+'hello python!'
+>>> say.count('o')
+2
+>>> say.count('o', 1, 10)
+1
+</pre>
+
+- decode(encoding = ‘UTF-8’,errors = ‘strict’) : 使用编码encoding解码该字符串。 编码默认为默认字符串encoding
+- encode(encoding = ‘UTF-8’,errors = ‘strict’) : 返回字符串的编码字符串版本; 在错误的情况下，默认是抛出ValueError，除非使用’ignore‘或’replace‘给出错误
+- endswith(suffix, beg = 0, end = len(string)) : 确定字符串或字符串的子字符串(如果启动索引结束和结束索引结束)都以后缀结尾; 如果是则返回true，否则返回false。
+- find(str, beg = 0 end = len(string)) : 如果索引beg和结束索引end给定，则确定str是否在字符串或字符串的子字符串中，如果找到则返回第一个位置的索引，否则为-1。 与此类似的还有index方法，index方法找不到则会发生异常。
+- isalnum() : 如果字符串至少包含1个字符，并且所有字符均为数字，则返回true，否则返回false。
+- isalpha() : 如果字符串至少包含1个字符，并且所有字符均为字母，则返回true，否则返回false
+- isdigit() : 如果字符串只包含数字则返回true，否则返回false
+- islower() : 如果字符串至少包含1个字母，并且所有字符均为小写，则返回true，否则返回false
+- istitle() : 如果字符串正确“标题大小写”(即所有单词首字母大写)，则返回true，否则返回false
+- isupper() : 如果字符串至少包含一个可变大小写字符，并且所有可变大小写字符均为大写，则返回true，否则返回false
+- join(seq) : 将序列seq中的元素以字符串表示合并(并入)到具有分隔符字符串的字符串中; seq必须是字符串序列。
+- len(string) : 返回字符串的长度
+- lstrip() ： 删除字符串所有前导空格
+- max(str) ： 从字符串str返回最大字母字符
+- strip([chars]) ： 对字符差执行ltrip()、rtrip()操作
+- replace(old, new [, max]) : 如果给定max值，则用new或最多最大出现替换字符串中所有出现的旧字符(old)
+- split(str [, max=]) : 将字符串按给定的字符串进行拆分，返回一个列表
+- title() : 对字符串进行标题化，即所有单词首字母大写其余小写。
+<pre>
+>>> say.endswith('!')
+True
+>>> say.endswith('n')
+False
+
+>>> say
+'hello python!'
+>>> say.find('o')
+4
+>>> say.find('z')
+-1
+>>> say
+'hello python!'
+>>> say.islower()
+True
+>>> say.isupper()
+False
+>>> "1234".isupper()
+False
+>>> "1234".islower()
+False
+>>> seq = ["1", "2", "3", "4"]
+>>> "-".join(seq)
+'1-2-3-4'
+
+>>> say
+'hello python!'
+>>> len(say)
+13
+
+>>> max(say)
+'y'
+
+" aaa  bbb cc  "
+>>> something.strip()   ## 去除两端空格
+'aaa  bbb cc'
+
+>>> something
+' aaa  bbb cc  '
+>>> something.replace('a', 'A') ## 将字符串中的a替换为A
+' AAA  bbb cc  '
+
+>>> something.split('-')
+[' aaa  bbb cc  ']
+>>> something.split(' ')
+['', 'aaa', '', 'bbb', 'cc', '', '']
+>>> something
+' aaa  bbb cc  '
+>>> type(something.split(' '))
+<class 'list'>
+</pre>
+
+
