@@ -1,16 +1,18 @@
-## purpose
+## Python学习目标
 
-- Syntax
-- Object-Oriented Program 
-- Module Program 模块编程
-- Game Program 游戏
-- Computer Simulation 仿真
+- 基础语法
+- 面向对象编程
+- 模块化编程
+- 游戏编程
+- 计算
+- 量化交易
+- 网络爬虫
 
 
 
 
 
-#### syntax
+#### 基础语法一览
 
 - 不需要明确的声明类型来保留内存空间:name = "Maxsu"
 - 允许同时为多个变量分配单个值:a = b = c = 1
